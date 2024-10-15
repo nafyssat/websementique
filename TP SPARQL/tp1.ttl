@@ -1,0 +1,36 @@
+
+select distinct ?p 
+where {
+dbr:Nantes ?p ?o 
+}
+
+1-Display all the properties where  Nantes is the object. 
+select ?p where {?s ?p dbr:Nantes}
+
+2-Display the subject and the properties where Nantes is the object.
+select ?s ?p where {?s ?p dbr:Nantes }
+
+3-On the page of Nantes, you can see people whose Nantes is a birthPlace. Write a SPARQL query to display the name of persons  (foaf:givenName, foaf:name) whose birth place is Nantes (rdf:type dbo:Person, dbo:birthPlace). 
+Hints: you can look up the page
+select ?name ?page where {
+    ?s dbo:birthPlace dbr:Nantes;
+       foaf:name ?name
+}
+4-Complete the previous query to display the corresponding Wikipedia page of these persons.
+select ?name ?page where {
+    ?s dbo:birthPlace dbr:Nantes;
+       foaf:name ?name;
+      foaf:isPrimaryTopicOf ?page
+}
+5- Write the SPARQL query to display the name, portrait, birthday, nationality, and missions  of women astronauts  
+select ?name ?portrait ?birthday ?nationality ?missions where{
+    ?astro ?p dbc:Women_astronauts;
+    
+     foaf:name ?name;
+    dbo:thumbnail ?portrait;
+    dbo:birthDate ?birthday;
+    dbp:nationality ?nationality;
+    dbp:mission ?missions
+}
+
+exercice 2 :
